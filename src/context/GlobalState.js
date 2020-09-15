@@ -28,10 +28,16 @@ export const GlobalProvider = ({ children }) => {
       });
       
     const removeEmployee = async (id)  => {
-        dispatch({
-            type: 'REMOVE_EMPLOYEE',
-            payload: id
-        });
+        const formData = new FormData();
+        formData.append('id', id)
+        const response = await axios.post("https://my-demo-form.herokuapp.com/contracts/delete.php", formData);
+        const {OK} = response.data
+        if(OK === "YES"){
+            dispatch({
+                type: 'REMOVE_EMPLOYEE',
+                payload: id
+            });
+        }
     };
 
     const addEmployee = async (employee) => {
