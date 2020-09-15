@@ -43,8 +43,8 @@ export const Employeelist = () => {
       <td className="border px-4 py-2"> {employee.supplier}</td>
       <td className="border px-4 py-2"> {employee.authority_require}</td>
       <td className="border px-4 py-2"> {employee.annual_contract_amount}</td>
-      <td className="border px-4 py-2"> {moment(employee.start_date).format('DD.MM.yyyy')}</td>
-      <td className="border px-4 py-2"> {moment(employee.end_date).format('DD.MM.yyyy')}</td>
+      <td className="border px-4 py-2"> {moment(employee.start_date).format('DD/MM/yyyy')}</td>
+      <td className="border px-4 py-2"> {moment(employee.end_date).format('DD/MM/yyyy')}</td>
       <td className="border px-4 py-2"> {employee.who_pay}</td>
       <td className="border px-4 py-2"> {employee.comment}</td>
       <td className="border px-4 py-2"> {employee.file_path && employee.file_name && <a href={`${employee.file_path}`}> {`${employee.file_name}`}</a>}</td>

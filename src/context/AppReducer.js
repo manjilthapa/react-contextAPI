@@ -21,7 +21,7 @@ export default (state, action) => {
             const updatedEmployee = action.payload;
 
             const updatedEmployees = state.employees.map(employee => {
-                if (employee.id === updatedEmployee.id) {
+                if (parseInt(employee.id) === parseInt(updatedEmployee.id)) {
                     return updatedEmployee;
                 }
                 return employee;

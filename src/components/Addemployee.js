@@ -1,4 +1,7 @@
 import React, { Fragment, useState, useContext } from 'react';
+
+import moment from 'moment';
+
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import da from 'date-fns/locale/da';

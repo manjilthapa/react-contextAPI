@@ -1,4 +1,5 @@
 import React, { createContext, useReducer, useEffect } from 'react';
+import moment from 'moment'
 import axios from 'axios'
 import AppReducer from './AppReducer';
 
@@ -50,8 +51,8 @@ export const GlobalProvider = ({ children }) => {
         formData.append('authority_require',employee.authority_require)
         formData.append('annual_contract_amount',employee.annual_contract_amount)
         formData.append('who_pay',employee.who_pay)
-        formData.append('start_date',employee.start_date)
-        formData.append('end_date',employee.end_date)
+        formData.append('start_date',moment(employee.start_date).toISOString())
+        formData.append('end_date',moment(employee.end_date).toISOString())
         formData.append('comment', employee.comment)
         formData.append('file',employee.file)
         const response = await axios.post("https://my-demo-form.herokuapp.com/contracts/create.php", formData);
@@ -63,11 +64,15 @@ export const GlobalProvider = ({ children }) => {
         });
     };
 
-    function editEmployee(employees) {
-        dispatch({
-            type: 'EDIT_EMPLOYEE',
-            payload: employees
-        });
+    const editEmployee = async (employee) => {
+        const response = await axios.post("https://my-demo-form.herokuapp.com/contracts/update.php", employee);
+        const {OK} = response.data
+        if(OK === "YES"){
+            dispatch({
+                type: 'EDIT_EMPLOYEE',
+                payload: employee
+            });
+        }
     };
 
     return (<GlobalContext.Provider value={{
