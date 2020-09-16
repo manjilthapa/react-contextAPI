@@ -47,14 +47,14 @@ export const Editemployee = (route) => {
     }
 
     const onStartDateChange = data => {
-        setSeletedEmployee({...selectedEmployee, start_date: data})
+        setSeletedEmployee({...selectedEmployee, start_date: moment(data).format("YYYY-MM-DD")})
        
     }
 
     const onEndDateChange = data => {
        // const newDate = moment(data).format('DD.MM.yyyy')
        // setExpireDate(data)
-        setSeletedEmployee({...selectedEmployee, end_date: data})
+        setSeletedEmployee({...selectedEmployee, end_date: moment(data).format("YYYY-MM-DD")})
         
     }
 

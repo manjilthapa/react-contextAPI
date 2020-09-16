@@ -51,8 +51,8 @@ export const GlobalProvider = ({ children }) => {
         formData.append('authority_require',employee.authority_require)
         formData.append('annual_contract_amount',employee.annual_contract_amount)
         formData.append('who_pay',employee.who_pay)
-        formData.append('start_date',moment(employee.start_date).toISOString())
-        formData.append('end_date',moment(employee.end_date).toISOString())
+        formData.append('start_date',moment(employee.start_date).format('YYYY-MM-DD'))
+        formData.append('end_date',moment(employee.end_date).format('YYYY-MM-DD'))
         formData.append('comment', employee.comment)
         formData.append('file',employee.file)
         const response = await axios.post("https://my-demo-form.herokuapp.com/contracts/create.php", formData);
