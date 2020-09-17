@@ -65,8 +65,29 @@ export const GlobalProvider = ({ children }) => {
     };
 
     const editEmployee = async (employee) => {
-        const response = await axios.post("https://my-demo-form.herokuapp.com/contracts/update.php", employee);
-        const {OK} = response.data
+        console.log("HERE")
+        const formData = new FormData();
+        formData.append('id',employee.id)
+        formData.append('address',employee.address)
+        formData.append('institution',employee.institution)
+        formData.append('contact_person',employee.contact_person)
+        formData.append('supplier',employee.supplier)
+        formData.append('installation',employee.installation)
+        formData.append('authority_require',employee.authority_require)
+        formData.append('annual_contract_amount',employee.annual_contract_amount)
+        formData.append('who_pay',employee.who_pay)
+        formData.append('start_date',moment(employee.start_date).format('YYYY-MM-DD'))
+        formData.append('end_date',moment(employee.end_date).format('YYYY-MM-DD'))
+        formData.append('comment', employee.comment)
+        formData.append('file_path', employee.file_path)
+        formData.append('file_name', employee.file_name)
+        formData.append('file',employee.file)
+        const response = await axios.post("https://my-demo-form.herokuapp.com/contracts/update.php", formData);
+        const {OK, data} = response.data
+        if(data){
+            employee = { ...employee, file_path:data.file_path, file_name: data.file_name}
+        }
+        
         if(OK === "YES"){
             dispatch({
                 type: 'EDIT_EMPLOYEE',

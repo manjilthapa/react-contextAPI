@@ -177,12 +177,12 @@ export const Addemployee = () => {
                     </div>
 
                     <div className="w-full  mb-5"> 
-                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="file">
-                    Dokument
-                    </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:text-gray-600"
-                        onChange={onFileChange} name="file" type="file" placeholder="upload file" /> 
-                </div> 
+                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="file">
+                        Dokument
+                        </label>
+                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:text-gray-600"
+                            onChange={onFileChange} name="file" type="file" placeholder="upload file" /> 
+                    </div> 
 
                     <div className="flex items-center justify-between">
                         <button className="mt-5 bg-green-400 w-full hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
